@@ -1,0 +1,17 @@
+#port: /dev/rfcomm1
+port: /dev/ttyUSB0
+baud: 115200
+rate: 100.0 # Default: 100.0
+read_rate: 15
+write_rate: 25
+sync_read: true
+sync_write: true
+
+joints: {
+base: {id: 1, neutral: 205, max_angle: 180, min_angle: -60, max_speed: 90},
+elbow: {id: 2, neutral: 205, max_angle: 180, min_angle: -60, max_speed: 90},
+gripper: {id: 3, neutral: 205, max_angle: 180, min_angle: -60, max_speed: 90},
+}
+controllers: {
+    arm_controller: {type: follow_controller, joints: [base, elbow, gripper], action_name: arm_controller/follow_joint_trajectory,  onboard: False }
+}

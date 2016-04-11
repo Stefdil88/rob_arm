@@ -1,0 +1,20 @@
+#port: /dev/ttyUSB0
+port: /dev/rfcomm1
+baud: 115200
+rate: 100
+read_rate: 10
+write_rate: 10
+sync_read: true # Read simultaneously from the servos. Quicker, if enabled.
+sync_write: true  # Write simultaneously to the servos. Quicker, if enabled.
+joints: {
+  base:     {id: 1, type: dynamixel, neutral: 512, min_angle:  -90, max_angle:  90, max_speed: 60},
+  elbow:    {id: 2, type: dynamixel, neutral: 512, min_angle: -130, max_angle: 145, max_speed: 60},
+  gripper:  {id: 3, type: dynamixel, neutral: 512, min_angle: -150, max_angle:   0, max_speed: 60}
+}
+# neutral:    Position in Ticks, typically 512.
+# min_angle:  Minimum angle measured from the neutral position in degrees.
+# max_angle:  Maximum angle measured from the neutral position in degrees.
+# max_speed:  In degrees per second.
+controllers: {
+  arm_controller: {type: follow_controller, joints: [base, elbow, gripper], action_name: arm_controller/follow_joint_trajectory}
+}

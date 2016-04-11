@@ -1,0 +1,20 @@
+In this repository you can find the ROS drivers to connect the robotic arm both via USB cable and Bluetooth.
+
+For the BLuetooth connection please use the following command to pair the arbotix microcontroller with the computer:
+
+
+`hcitool dev` -> Get Bluetooth device name (e.g. `hci0`)
+`hcitool scan` -> Search for available bluetooth devices to pair with (e.g. `00:07:80:42:04:1E`)
+bluez-simple-agent <bluetooth-device-name> <bluetooth device to pair with> (e.g. `bluez-simple-agent hci0 00:07:80:42:04:1E`
+
+Establish serial connection:
+`sudo rfcomm bind <port-number> <bluetooth device to pair with>`
+
+-> Interface to device: /dev/rfcomm<port-number>
+
+Unestablish serial connection:
+sudo rfcomm release <port-number>
+
+
+
+

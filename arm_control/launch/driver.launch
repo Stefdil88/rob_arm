@@ -1,0 +1,11 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+
+	<node name="arbotix" pkg="arbotix_python" type="arbotix_driver"
+		required="true" output="screen">
+		<rosparam file="$(find arm_control)/config/driver.yaml"
+			command="load" />
+	</node>
+
+</launch>
