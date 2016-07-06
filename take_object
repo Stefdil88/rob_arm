@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+case $1 in
+    st)
+	rosrun arm_control FJT_client
+        ;;
+    ip)
+	rosrun arm_control FJT2_client
+	;;
+    *)
+	rosrun arm_control FJT_client
+        ;;
+esac
